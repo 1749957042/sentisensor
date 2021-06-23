@@ -15,7 +15,7 @@ person = {
     'last_name' : 'TRAORE',
     'address' : '9 rue Léon Giraud · PARIS · FRANCE',
     'job': 'Web developer',
-    'tel': '0678282923',
+    'tel': '15586537731',
     'email': 'nohossat.tra@yahoo.com',
     'description' : 'Suite à une expérience internationale en développement web et dans le domaine des arts, l’impact de l’intelligence artificielle dans nos vies me surprend de jour en jour. \n Aujourd’hui, je souhaite changer de cap et comprendre les secrets que recèlent nos données. J’aimerais mettre à profit ces découvertes au service des entreprises/associations à dimension sociale.',
     'social_media' : [

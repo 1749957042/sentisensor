@@ -11,20 +11,22 @@ import csv, re, operator
 app = Flask(__name__)
 
 person = {
-    'first_name': 'Nohossat',
-    'last_name' : 'TRAORE',
-    'address' : '9 rue Léon Giraud · PARIS · FRANCE',
-    'job': 'Web developer',
-    'tel': '15586537731',
-    'email': 'nohossat.tra@yahoo.com',
-    'description' : 'Suite à une expérience internationale en développement web et dans le domaine des arts, l’impact de l’intelligence artificielle dans nos vies me surprend de jour en jour. \n Aujourd’hui, je souhaite changer de cap et comprendre les secrets que recèlent nos données. J’aimerais mettre à profit ces découvertes au service des entreprises/associations à dimension sociale.',
+    'first_name': 'zhou',
+    'last_name' : 'mingtao',
+    'address' : '湖北孝感',
+    'job': '无',
+    'PersonalElucidation': '知道的越多，不知道的也越多',
+    'tel': '+86 15586537731',
+    'email': 'zhou1749957042@gmail.com',
+    'web':"www.baidu.com",
+    'description' : '加油！',
     'social_media' : [
         {
-            'link': 'https://www.facebook.com/nono',
+            'link': 'https://gitee.com/zhou-mingtao',
             'icon' : 'fa-facebook-f'
         },
         {
-            'link': 'https://github.com/nono',
+            'link': 'https://github.com/1749957042',
             'icon' : 'fa-github'
         },
         {
@@ -32,29 +34,29 @@ person = {
             'icon' : 'fa-linkedin-in'
         },
         {
-            'link': 'https://twitter.com/nono',
+            'link': 'https://blog.csdn.net/qq_44250569?spm=1001.2014.3001.5343',
             'icon' : 'fa-twitter'
         }
     ],
     'img': 'img/img_nono.jpg',
     'experiences' : [
         {
-            'title' : 'Web Developer',
-            'company': 'AZULIK',
-            'description' : 'Project manager and lead developer for several AZULIK websites.',
-            'timeframe' : 'July 2018 - November 2019'
+            'title' : '教育经历',
+            'company': '湖北师范大学',
+            'description' : '无',
+            'timeframe' : '2018.9-2020.6'
         },
         {
-            'title' : 'Freelance Web Developer',
-            'company': 'Independant',
-            'description' : 'Create Wordpress websites for small and medium companies. ',
-            'timeframe' : 'February 2017 - Present'
+            'title' : '启明普法项目',
+            'company': '项目经历',
+            'description' : '一个 基于SSM框架搭建的新闻类网站，登录后的用户可通过趣味答题来了解一些基本的法律法规',
+            'timeframe' : '2020.10 - 2021.01'
         },
         {
-            'title' : 'Sharepoint Intern',
-            'company': 'ALTEN',
-            'description' : 'Help to manage a 600 Sharepoint sites platform (audit, migration to Sharepoint newer versions)',
-            'timeframe' : 'October 2015 - October 2016'
+            'title' : '谷粒商城',
+            'company': '项目经历',
+            'description' : '谷粒商城后台管理系统是一套B2C模式电商系统,销售自营给客户，基于SpringBoot+MyBatis实现。',
+            'timeframe' : '2021.2 - 2021.5'
         }
     ],
     'education' : [
@@ -81,7 +83,7 @@ person = {
         }
     ],
     'programming_languages' : {
-        'HMTL' : ['fa-html5', '100'], 
+        'HTML' : ['fa-html5', '100'],
         'CSS' : ['fa-css3-alt', '100'], 
         'SASS' : ['fa-sass', '90'], 
         'JS' : ['fa-js-square', '90'],
@@ -91,8 +93,8 @@ person = {
         'MySQL' : ['fa-database', '60'],
         'NodeJS' : ['fa-node-js', '50']
     },
-    'languages' : {'French' : 'Native', 'English' : 'Professional', 'Spanish' : 'Professional', 'Italian' : 'Limited Working Proficiency'},
-    'interests' : ['Dance', 'Travel', 'Languages']
+    'languages' : {'英语' : 'Professional','Chinese' : 'Professional'},
+    'interests' : ['PingPong', 'Game', 'Programming','listen']
 }
 
 @app.route('/')
@@ -174,4 +176,4 @@ def main():
 
 
 if __name__ == '__main__':
-  app.run(debug= True,port=5000,threaded=True)
+  app.run(debug=True, port=80, host="0.0.0.0", threaded=True)

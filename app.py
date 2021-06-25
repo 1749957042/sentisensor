@@ -107,18 +107,133 @@ def cv(person=person):
 @app.route('/callback', methods=['POST', 'GET'])
 def cb():
 	return gm(request.args.get('data'))
+
+def cb1():
+ 	return gm1(request.args.get('data'))
+def cb2():
+ 	return gm2(request.args.get('data'))
+def cb3():
+ 	return gm3(request.args.get('data'))
    
 @app.route('/chart')
-def index():
-	return render_template('chartsajax.html',  graphJSON=gm())
+def chart():
+	return render_template('chartsajax.html',  graphJSON=gm() , graphJSON1=gm1() , graphJSON2=gm2() , graphJSON3=gm3() ,
+                                               graphJSON4=gm4() , graphJSON5=gm5() , graphJSON6=gm6() , graphJSON7=gm7(),
+                                               graphJSON8=gm8() , graphJSON9=gm9() , graphJSON10=gm10() , graphJSON11=gm11()
+						                       )
+#线条图
+def gm(sex='Female'):
+	df = pd.read_csv(r'static/tips.csv')
 
-def gm(country='United Kingdom'):
-	df = pd.DataFrame(px.data.gapminder())
-
-	fig = px.line(df[df['country']==country], x="year", y="gdpPercap")
+	fig = px.line(df[df['sex']==sex], x="tip", y="size", color = "day")
 
 	graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 	return graphJSON
+
+#条形图
+def gm1(sex='Female'):
+	df = pd.read_csv(r'static/tips.csv')
+
+	fig = px.bar(df[df['sex']==sex], x="total_bill", y="size", color = "day")
+
+	graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON
+
+#散点图
+def gm2(sex='Female'):
+	df = pd.read_csv(r'static/tips.csv')
+
+	fig = px.scatter(df[df['sex']==sex], x="tip", y="size")
+
+	graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON
+
+#矩阵散点图
+def gm3(sex='Female'):
+	df = px.data.tips()
+
+	fig = px.scatter_matrix(df[df['sex']==sex])
+
+	graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON
+
+#并行类别图
+def gm4(sex='Female'):
+	df = pd.read_csv(r'static/tips.csv')
+
+	fig = px.parallel_categories(df[df['sex']==sex],color="size", color_continuous_scale=px.
+            colors.sequential.Inferno)
+
+	graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON
+
+
+#堆积区域图
+def gm5(sex='Female'):
+	df = pd.read_csv(r'static/tips.csv')
+
+	fig = px.area(df[df['sex']==sex],x="tip", y="size", color="time",
+        line_group="time")
+
+	graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON
+
+#密度等值线图
+def gm6(sex='Female'):
+	df = pd.read_csv(r'static/tips.csv')
+
+	fig = px.density_contour(df[df['sex']==sex], x="tip", y="size")
+
+	graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON
+
+#条形图，设置堆积类型
+def gm7(sex='Female'):
+	df = pd.read_csv(r'static/tips.csv')
+
+	fig = px.bar(df[df['sex']==sex], x="sex", y="total_bill", color="smoker", barmode="group")
+
+	graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON
+
+#直方图，并在上分增加细条图
+def gm8(sex='Female'):
+	df = pd.read_csv(r'static/tips.csv')
+
+	fig = px.histogram(df[df['sex']==sex], x="total_bill", y="tip", color="sex", marginal="rug",
+             hover_data=df[df['sex']==sex].columns)
+
+	graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON
+
+#长条图，设置方向为水平
+def gm9(sex='Female'):
+	df = pd.read_csv(r'static/tips.csv')
+
+	fig = px.strip(df[df['sex']==sex], x="total_bill", y="time", orientation="h", color="smoker")
+
+	graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON
+
+#箱形图，设置使用槽口绘制框
+def gm10(sex='Female'):
+	df = pd.read_csv(r'static/tips.csv')
+
+	fig = px.box(df[df['sex']==sex], x="day", y="total_bill", color="smoker", notched=True)
+
+	graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON
+
+#小提琴图，同时在内部显示箱图，展示所有采样数据
+def gm11(sex='Female'):
+	df = pd.read_csv(r'static/tips.csv')
+
+	fig = px.violin(df[df['sex']==sex], y="tip", x="smoker", color="sex", box=True, points="all",
+          hover_data=df[df['sex']==sex].columns)
+
+	graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+	return graphJSON
+
 
 
 @app.route('/senti')

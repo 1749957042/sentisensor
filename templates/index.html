@@ -62,7 +62,7 @@
         <ul class="list-content ">
         	<li>{{ person.tel }}</li> <!-- YOUR PHONE NUMBER  -->
         	<li>{{ person.email }}</li> <!-- YOUR EMAIL -->
-        	<li><a href="#">{{person.web}}</a></li> <!-- YOUR WEBSITE  -->
+        	<li><a href="{{ url_for('chart') }}" target="_blank">web</a></li> <!-- YOUR WEBSITE  -->
         	<li>{{ person.address }}</li> <!-- YOUR STATE AND COUNTRY  -->
         </ul>
       </div>
@@ -116,7 +116,6 @@
         	</ul>
         
       </div>
-      
       <div class="section-wrapper clearfix">
         <h3 class="section-title">爱好</h3>  <!-- DESCRIPTION OF YOUR HOBBIES -->
         {% for interest in person.interests %}

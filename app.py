@@ -13,6 +13,7 @@ app = Flask(__name__)
 person = {
     'first_name': 'zhou',
     'last_name' : 'mingtao',
+    'name' :'Zhou Mingtao' ,
     'address' : '湖北孝感',
     'job': '无',
     'PersonalElucidation': '知道的越多，不知道的也越多',

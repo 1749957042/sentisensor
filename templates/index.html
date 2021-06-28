@@ -2,134 +2,196 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Responsive Resume Template</title>
-  <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <link rel="stylesheet" href="static/css/style.css">
+  <title>CodePen - Resume svg scroll animation </title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
+  <link rel='stylesheet' href="static/css/style.css"/>
+  <script type="text/javascript" src="static/vendor/fontawesome/script.js"></script>
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<div class="resume-wrapper">
-	<section class="profile section-padding">
-		<div class="container">
-			<div class="picture-resume-wrapper">
-        <div class="picture-resume">
-        <span><img src="{{ url_for('static',filename = 'img/1.jpg') }}" alt="" /></span>
-        <svg version="1.1" viewBox="0 0 350 350">
-  
-  <defs>
-    <filter id="goo">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
-      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -9" result="cm" />
-    </filter>
-  </defs>
-  
-  
-<g filter="url(#goo)" >  
-  
-  <circle id="main_circle" class="st0" cx="171.5" cy="175.6" r="130"/>
-  
-  <circle id="circle" class="bubble0 st1" cx="171.5" cy="175.6" r="122.7"/>
-  <circle id="circle" class="bubble1 st1" cx="171.5" cy="175.6" r="122.7"/>
-  <circle id="circle" class="bubble2 st1" cx="171.5" cy="175.6" r="122.7"/>
-  <circle id="circle" class="bubble3 st1" cx="171.5" cy="175.6" r="122.7"/>
-  <circle id="circle" class="bubble4 st1" cx="171.5" cy="175.6" r="122.7"/>
-  <circle id="circle" class="bubble5 st1" cx="171.5" cy="175.6" r="122.7"/>
-  <circle id="circle" class="bubble6 st1" cx="171.5" cy="175.6" r="122.7"/>
-  <circle id="circle" class="bubble7 st1" cx="171.5" cy="175.6" r="122.7"/>
-  <circle id="circle" class="bubble8 st1" cx="171.5" cy="175.6" r="122.7"/>
-  <circle id="circle" class="bubble9 st1" cx="171.5" cy="175.6" r="122.7"/>
-  <circle id="circle" class="bubble10 st1" cx="171.5" cy="175.6" r="122.7"/>
+<body>
+<style>
+    .a{
+        target:"_blank";
+        text-decoration:none;
+        color:black;
+    }
+    .img{
+        width: 25px;
+        height: 25px;
+        border-radius:5px;
+    }
 
-</g>  
-</svg>
-      </div>
-         <div class="clearfix"></div>
- </div>
-      <div class="name-wrapper">
-        <h1>{{ person.first_name }}<br/>{{ person.last_name }}</h1><!-- YOUR NAME AND LAST NAME  -->
-      </div>
-      <div class="clearfix"></div>
-      <div class="contact-info clearfix">
-      	<ul class="list-titles">
-      		<li>电话号码</li>
-      		<li>邮箱</li>
-      		<li>个人网站</li>
-      		<li>地址</li>
-      	</ul>
-        <ul class="list-content ">
-        	<li>{{ person.tel }}</li> <!-- YOUR PHONE NUMBER  -->
-        	<li>{{ person.email }}</li> <!-- YOUR EMAIL -->
-        	<li><a href="{{ url_for('chart') }}" target="_blank">web</a></li> <!-- YOUR WEBSITE  -->
-        	<li>{{ person.address }}</li> <!-- YOUR STATE AND COUNTRY  -->
-        </ul>
-      </div>
-      <div class="contact-presentation"> <!-- YOUR PRESENTATION RESUME  -->
-      	<p><span class="bold">个人说明 : </span>{{ person.PersonalElucidation }}</p>
-      </div>
-      <div class="contact-social clearfix">
-      	<ul class="list-titles">
-      		<li>CSDN</li>
-      		<li>Github</li>
-      		<li>Gitee</li>
-      	</ul>
-        <ul class="list-content"> <!-- REMEMBER TO PUT THE URL ON THE HREF TAG  -->
-      		<li><a href="{{ person.social_media[3].link }}">CSDN</a></li> <!-- YOUR TWITTER USER  -->
-      		<li><a href="{{ person.social_media[1].link }}">Github</a></li> <!-- YOUR DRIBBBLE USER  -->
-      		<li><a href="{{ person.social_media[0].link }}">Gitee</a></li> <!-- YOUR BEHANCE USER  -->
-      	</ul>
-      </div>
-		</div>
-	</section>
-  
-  <section class="experience section-padding">
-  	<div class="container">
-  		<h3 class="experience-title">EXPERIENCE</h3>
-        {% for experience in person.experiences %}
-          <div class="experience-wrapper">
-            <div class="company-wrapper clearfix">
-                <div class="experience-title">{{ experience.company }}</div> <!-- NAME OF THE COMPANY YOUWORK WITH  -->
-              <div class="time">{{ experience.timeframe }}</div> <!-- THE TIME YOU WORK WITH THE COMPANY  -->
+    #xiangmu{
+        width: 700px;
+        height: 500px;
+        margin-left:-1000px;
+        margin-top: 500px;
+        position: absolute;
+    }
+
+    #jiaoyu{
+        width: 700px;
+        height: 500px;
+        margin-left:-1000px;
+        margin-top: 2000px;
+        position: absolute;
+    }
+
+    #geren{
+        width: 700px;
+        height: 500px;
+        margin-right:-1200px;
+        margin-top: 500px;
+        position: absolute;
+    }
+
+
+
+</style>
+
+<header id="intro">
+    <div id="content">
+            <h2 id="nombre">{{ person.name }}</h2>
+            <div id="logo">
+                <img class="alaizq" src="https://res.cloudinary.com/pastelitos/image/upload/v1610527188/eva/ala-izq_msqlcq.svg" alt="ala" />
+                <img class="yo" src="https://res.cloudinary.com/pastelitos/image/upload/v1610527212/eva/yo-circulo_rnt0jf.svg" alt="logo" />
+                <img class="alader" src="https://res.cloudinary.com/pastelitos/image/upload/v1610527181/eva/ala-der_p27xhh.svg" alt="ala" />
+        <!--CONTENEDOR DE DATOS -->                
+                <div id="contenedorDatosGeneral">
+                    <div id="contenedorDatos">11</div>
+                </div> 
+            </div>
+            <h2 id="curriculum">Resume</h2>
+            <div id="social"> 
+                <a href="https://mail.qq.com/cgi-bin/frame_html?sid=ijihPwZzZijxKkIi&r=971c9b7f9b39be0a0339dab061bab078" target="_blank"><img src="static/img/youxiang.jpg" class="img"/></a>
+                <a href="https://github.com/1749957042" target="_blank"><img src="static/img/github.jpg" class="img"/></a>
+                <a href="https://gitee.com/zhou-mingtao" target="_blank"><img src="static/img/gitee.jpg" class="img"/></a>
             </div>
 
-            <div class="job-wrapper clearfix">
-                <div class="experience-title">{{ experience.title }}</div> <!-- JOB TITLE  -->
-              <div class="company-description">
-                <p>{{ experience.description }}</p>  <!-- JOB DESCRIPTION  -->
-              </div>
+            个人作品
+            <div id="flechaScroll">  
+                <i class="fa fa-arrow-down fa-2x" aria-hidden="true"></i>
             </div>
-          {% endfor %}
 
-      </div><!--Skill experience-->
-      
-      <div class="section-wrapper clearfix">
-      	<h3 class="section-title">专业技能</h3>  <!-- YOUR SET OF SKILLS  -->
-        	<ul>
-        		<li class="skill-percentage">HTML / CSS / Javascript</li>
-        		<li class="skill-percentage">Java</li>
-        		<li class="skill-percentage">Linux / docker</li>
-        		<li class="skill-percentage">redis / mysql</li>
-        		<li class="skill-percentage">SSM</li>
-        		<li class="skill-percentage">SpringBoot</li>
-        	</ul>
-        
-      </div>
-      <div class="section-wrapper clearfix">
-        <h3 class="section-title">爱好</h3>  <!-- DESCRIPTION OF YOUR HOBBIES -->
-        {% for interest in person.interests %}
-        <p>{{ interest }}</p>
-          {% endfor %}
-      </div>
-      
-  	</div>
-  </section>
-  
-  <div class="clearfix"></div>
-</div>
+
+
+            <a href="{{url_for('chart')}}" target="_blank"  class="a">数据可视化</a><br>
+            <a href="http://1.117.98.41:8080/VenuLaws" target="_blank" class="a">法制教育</a><br>
+            <a href="http://8.142.7.216:8080/JS_Connection/Login.jsp" target="_blank" class="a">个人商城</a>
+
+            <div id="xiangmu">
+                <div>
+                    <div style="font-size: 20px"><h1>项目经历</h1></div><br>
+                    <div>项目名称 : 谷粒商城</div><br>
+                    <div>使用技术 : Vue+SSM+springboot+Maven+Docker+Themeleaf+redis+Nginx</div><br>
+                    <div>项目描述 : </div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;谷粒商城后台管理系统是一套B2C模式电商系统,销售自营给客户，基于SpringBoot+MyBatis实现。 后台管理系统包含商品管理、库存管理、订单管理、营销管理，用户管理，内容管理。前台商城包含首页门户，商品推荐，商品搜索，商品展示，购物车，订单流程，商品秒杀。</div>
+                </div>
+                <div style="margin-top: 40px">
+                    <div style="font-size: 20px"><h1>项目经历</h1></div><br>
+                    <div>项目名称 :  启明普法项目</div><br>
+                    <div>使用技术 :  Vue+ueditor+Spring+Spring MVC+MyBatis+Maven+Docker </div><br>
+                    <div>项目描述 :  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个基于SSM框架搭建的新闻类网站，登录后的用户可通过趣味答题来了解一些基本的法律法规，除此，用户可通过此网站了解最新法律发布、条法案例解读及地区线下进行活动的相关情况，并通过留言区与管理员进行相关问题的态度交流，也可通过扫码关注公众号与管理方取得联系。同时管理员可通过基于 adminLTE 框架完成的后台管理系统发布相关板块的新闻信息，上传活动资料，与用户留言互动。</div>
+                    <br>
+                    <div>项目职责 :
+                        <div>&nbsp;&nbsp;1、使用阿里云oss对象存储进行图片的存储和展示；</div>
+                        <div>&nbsp;&nbsp;2、使用 MyBatis 完成各新闻模块增删改查，并通过ajax实现数据的局部更新和分页展示；</div>
+                        <div>&nbsp;&nbsp;3、实现通过ueditor编辑器完成多图上传并回显及视频上传；</div>
+                        <div>&nbsp;&nbsp;4、Centos服务器端项目部署。</div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div id="jiaoyu">
+                    <div>
+                        <div style="font-size: 20px"><h1>专业技能</h1></div><br>
+                        <div>1.java基础知识掌握扎实，集合、反射、io流都掌握很熟练</div><br>
+                        <div>2.掌握一部分java虚拟机知识和一些常用的设计模式</div><br>
+                        <div>3.熟练使用spring+springmvc+mybatis等主流开发框架，了解springboot框架</div><br>
+                        <div>4.知道动态代理以及spring框架底层原理，面向切面编程</div><br>
+                        <div>5.熟练运用mysql数据库,掌握sql常用操作语句，掌握redis数据库</div><br>
+                        <div>6.熟练使用jquery,js,jsp,servle,cookie等前端技术,了解http协议</div><br>
+                        <div>7.熟练使用idea,webstorm, ,navicate,maven构建工具,git版本控制工具等常用开发工具</div><br>
+                        <div>8.了解dubbo和zookeeper，能够集成springboot和redis及dubbo和themeleaf模板引擎写项目</div><br>
+                        <div>9.了解docker容器的使用</div><br>
+                        <div>10.了解机器视觉相关的知识，能编写相关的功能代码</div>
+                    </div>
+            </div>
+
+            <div id="geren">
+                <div style="font-size: 20px"><h1>个人介绍</h1></div><br>
+                <div style="font-size: 18px">&nbsp;姓名 : 周锅盔</div><br>
+                <div style="font-size: 18px">&nbsp;年龄 : 20</div><br>
+                <div style="font-size: 18px">&nbsp;邮箱 : 1749957042@qq.com</div><br>
+                <div style="font-size: 18px">&nbsp;电话 : 15586537731</div>
+            </div>
+
+            {#<p id="ilus">I</p>
+            <p id="anim">A</p>
+            <p id="prog">Development</p>#}
+    </div>
+</header>
+
+<main class="main">
+    <div class="espacio-izq"></div>
+    <div class="contenedor-central">
+        <!-- FONDO ANIMACION -->
+        <div class="fondo">
+            <img src="https://res.cloudinary.com/pastelitos/image/upload/v1610527260/eva/arbolCV_athcou.svg" alt="arbol">
+        </div>
+       
+        <!--MARIKITA -->
+        <div class="marikita-cont">
+            <div id="marikita">
+                <img src="https://res.cloudinary.com/pastelitos/image/upload/v1610527356/eva/marikita_ve8zbo.svg" alt="marikita">
+            </div>
+        </div>
+        <div class="ojos-cont">
+            <div class="ojos">
+                <div class="ojo1"><div></div></div>
+                <div class="ojo2"></div>
+            </div>
+        </div>
+        <div class="bocadillos">
+            <img class="boc-ilus" src="https://res.cloudinary.com/pastelitos/image/upload/v1610527388/eva/ilustracion_vqtuje.svg" alt="ilustracion">
+            <img class="boc-anim" src="https://res.cloudinary.com/pastelitos/image/upload/v1610527406/eva/animacion_jph73t.svg" alt="animacion">
+            <img class="boc-prog" src="https://res.cloudinary.com/pastelitos/image/upload/v1610527400/eva/programacion_zzfyzm.svg" alt="programacion">
+        </div>
+        <div class="enlaces-ilustracion">
+            <a class="i-uno" target="_blank" href="https://www.behance.net/gallery/5711711/Zorro-Veloz"><img src="http://evasantos.com/ilustraciones/cv/Ilus1.PNG"></a>
+            <a class="i-dos" target="_blank" href="https://www.behance.net/gallery/14428487/Cats"><img src="http://evasantos.com/ilustraciones/cv/Ilus2.PNG"></a>
+            <a class="i-tres" target="_blank" href="https://www.behance.net/gallery/13990377/Wind"><img src="http://evasantos.com/ilustraciones/cv/Ilus3.PNG"></a>
+        </div>
+           <div class="enlaces-animacion">
+            <a class="a-uno" target="_blank" href="https://codepen.io/SoyEva/pen/LRjWzZ"><img src="http://evasantos.com/ilustraciones/cv/Code1.PNG"></a>
+            <a class="a-dos" target="_blank" href="https://codepen.io/SoyEva/pen/RPggrx"><img src="http://evasantos.com/ilustraciones/cv/Code2.PNG"></a>
+            <a class="a-tres" target="_blank" href="https://codepen.io/SoyEva/pen/XXRNBG"><img src="http://evasantos.com/ilustraciones/cv/Code3.PNG"></a>
+        </div>
+    </div>
+   
+    <div class="secciones">
+        <div class="seccion seccion1"></div>
+        <div class="seccion"></div>
+        <div class="seccion seccion2"></div>
+        <div class="seccion"></div>
+        <div class="seccion seccion3"></div>
+        <div class="seccion"></div>
+        <div class="seccion seccion4"></div>
+    </div>
+</main>
+</body>
 <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js'></script><script  src="static/vendor/fontawesome/script.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.0/TweenMax.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/ScrollMagic.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.3/plugins/animation.gsap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/plugins/BezierPlugin.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/plugins/CSSPlugin.min.js'></script><script  src="./script.js"></script>
 
 </body>
 </html>
